@@ -65,7 +65,7 @@ const Dashboard = () => {
         <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
           <div>
             <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-              Welcome Back, <span className="text-blue-600">Vishal</span>
+              Welcome Back, <span className="text-blue-600">Rahul</span>
             </h1>
             <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your smart reminders and upcoming tasks.</p>
           </div>
