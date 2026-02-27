@@ -11,17 +11,37 @@ import ProtectedRoute from './components/ProtectedRoute';
 const App = () => {
   return (
     <Routes>
-      {/* Login page without Navbar/Footer */}
+      {/* 1. Login page: No Protection, No Layout */}
       <Route path="/" element={<Login />} />
 
-      {/* App pages wrapped in Layout */}
-      <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
-      <Route path="/add-event" element={<Layout><AddEvent /></Layout>} />
-      <Route path="/edit-event/:id" element={<Layout><EditEvent /></Layout>} />
-      <Route path="/calendar" element={<Layout><Calendar /></Layout>} />
-      <Route path="/dashboard" element={<ProtectedRoute><Layout><Dashboard /></Layout> </ProtectedRoute>} />
-      <Route  path="/calendar" element={<ProtectedRoute><Layout><Calendar /></Layout> </ProtectedRoute> } />
-      </Routes>
+      {/* 2. Dashboard: Protected & with Layout */}
+      <Route path="/dashboard" element={
+        <ProtectedRoute>
+          <Layout><Dashboard /></Layout>
+        </ProtectedRoute>
+      } />
+
+      {/* 3. Add Event: Protected & with Layout */}
+      <Route path="/add-event" element={
+        <ProtectedRoute>
+          <Layout><AddEvent /></Layout>
+        </ProtectedRoute>
+      } />
+
+      {/* 4. Edit Event: Protected & with Layout */}
+      <Route path="/edit-event/:id" element={
+        <ProtectedRoute>
+          <Layout><EditEvent /></Layout>
+        </ProtectedRoute>
+      } />
+
+      {/* 5. Calendar: Protected & with Layout */}
+      <Route path="/calendar" element={
+        <ProtectedRoute>
+          <Layout><Calendar /></Layout>
+        </ProtectedRoute>
+      } />
+    </Routes>
   );
 };
 

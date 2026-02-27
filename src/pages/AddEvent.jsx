@@ -15,6 +15,7 @@ const AddEvent = () => {
     category: 'Exam' // Default category
   });
 
+  const [loading, setLoading] = useState(false); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -37,7 +38,7 @@ const AddEvent = () => {
 
        // Reference the subcollection
 
-        const userEventsRef = collection(db,"user",userId,"events");
+const userEventsRef = collection(db, "users", userId, "events");
 
         //  Add the document to Firestore
 
@@ -131,26 +132,30 @@ const AddEvent = () => {
                 <option value="Travel">Travel</option>
                 <option value="Birthday">Birthday</option>
                 <option value="Marriage">Marriage</option>
+                <option value="Sports">Sports</option>
               </select>
             </div>
           </div>
 
           {/* Form Actions */}
-          <div className="flex items-center gap-4 pt-4 mt-6">
-            <button
-              type="button"
-              onClick={() => navigate('/dashboard')}
-              className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-200"
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30 transition duration-200 transform active:scale-[0.98]"
-            >
-              Add Event
-            </button>
-          </div>
+          {/* Form Actions */}
+<div className="flex items-center gap-4 pt-4 mt-6">
+  <button
+    type="button"
+    onClick={() => navigate('/dashboard')}
+    className="flex-1 px-6 py-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-200"
+  >
+    Cancel
+  </button>
+  
+  <button
+    type="submit"
+    disabled={loading}
+    className="flex-[2] px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 shadow-lg transition duration-200 disabled:opacity-50"
+  >
+    {loading ? "Adding..." : "Save Event"}
+  </button>
+</div>
         </form>
       </div>
     </div>
