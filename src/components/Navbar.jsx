@@ -1,32 +1,52 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
+import { signOut } from 'firebase/auth';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const user = auth.currentUser;
+
+  const handleLogout = (e) => {
+    e.stopPropagation(); // Profile click trigger na ho
+    signOut(auth);
+    navigate('/');
+  };
 
   return (
-    <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Logo Section */}
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/dashboard')}>
-            <div className="bg-blue-600 p-1.5 rounded-lg">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              LifeTrack
-            </span>
+    <nav className="bg-white border-b border-slate-100 px-6 md:px-12 py-4 flex justify-between items-center sticky top-0 z-50">
+      {/* Logo */}
+      <Link to="/dashboard" className="text-2xl font-black text-blue-600 tracking-tighter">
+        LifeTrack
+      </Link>
+      
+      <div className="flex items-center gap-4 md:gap-8">
+        {/* Navigation Link */}
+        <Link 
+          to="/calendar" 
+          className="text-slate-500 font-bold hover:text-blue-600 transition text-sm md:text-base"
+        >
+          Calendar
+        </Link>
+        
+        {/* Clickable User Profile Section */}
+        <div 
+          onClick={() => navigate('/profile')}
+          className="flex items-center gap-3 pl-4 md:pl-8 border-l border-slate-100 cursor-pointer group transition-all"
+        >
+          {/* Avatar Icon */}
+          <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-black shadow-lg shadow-blue-100 group-hover:scale-105 transition-transform">
+            {user?.displayName?.charAt(0).toUpperCase() || "U"}
           </div>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link to="/dashboard" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 font-medium transition">Dashboard</Link>
-            <Link to="/calendar" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 font-medium transition">Calendar</Link>
+          {/* User Name & Logout Container */}
+          <div className="flex flex-col">
+            <span className="hidden md:block text-sm font-black text-slate-800 group-hover:text-blue-600 transition-colors">
+              {user?.displayName || "User"}
+            </span>
             <button 
-              onClick={() => navigate('/')}
-              className="px-5 py-2 rounded-full border border-blue-600 text-blue-600 font-semibold hover:bg-blue-50 transition"
+              onClick={handleLogout} 
+              className="text-[10px] text-red-500 font-bold uppercase tracking-widest hover:text-red-700 text-left transition"
             >
               Logout
             </button>

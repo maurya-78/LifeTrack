@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const Login = () => {
+  const [name, setName] = useState(''); // New state for Name
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isRegistering, setIsRegistering] = useState(false); // Toggle between Login/Signup
+  const [isRegistering, setIsRegistering] = useState(false);
   const navigate = useNavigate();
 
   const handleAuth = async (e) => {
@@ -16,30 +17,26 @@ const Login = () => {
 
     try {
       if (isRegistering) {
-        // Sign Up Logic
-        await createUserWithEmailAndPassword(auth, email, password);
-        console.log("User registered successfully");
+        // 1. Sign Up Logic
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        
+        // 2. Add Name to Firebase Profile
+        await updateProfile(userCredential.user, {
+          displayName: name
+        });
+        
+        console.log("User registered as:", name);
       } else {
         // Login Logic
         await signInWithEmailAndPassword(auth, email, password);
-        console.log("User logged in successfully");
       }
       navigate('/dashboard');
     } catch (err) {
-      // Firebase provides specific error codes (e.g., 'auth/invalid-credential')
-      // We map them to human-readable messages
+      // Error handling logic
       switch (err.code) {
-        case 'auth/email-already-in-use':
-          setError('This email is already registered.');
-          break;
-        case 'auth/invalid-credential':
-          setError('Incorrect email or password.');
-          break;
-        case 'auth/weak-password':
-          setError('Password should be at least 6 characters.');
-          break;
-        default:
-          setError('An error occurred. Please try again.');
+        case 'auth/email-already-in-use': setError('This email is already registered.'); break;
+        case 'auth/invalid-credential': setError('Incorrect email or password.'); break;
+        default: setError('An error occurred. Please try again.');
       }
     }
   };
@@ -52,10 +49,17 @@ const Login = () => {
         </h2>
 
         <form onSubmit={handleAuth} className="space-y-6">
-          {error && (
-            <div className="bg-red-100 text-red-700 p-3 rounded-lg text-sm border border-red-200">
-              {error}
-            </div>
+          {error && <div className="bg-red-100 text-red-700 p-3 rounded-lg text-sm border border-red-200">{error}</div>}
+
+          {/* Sirf Signup ke waqt Name field dikhayein */}
+          {isRegistering && (
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="w-full p-3 rounded-lg border dark:bg-gray-700 dark:text-white"
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
           )}
 
           <input
@@ -74,7 +78,7 @@ const Login = () => {
             required
           />
 
-          <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg font-bold hover:bg-blue-700">
+          <button type="submit" className="w-full bg-blue-600 text-white p-3 rounded-lg font-bold hover:bg-blue-700 transition">
             {isRegistering ? 'Sign Up' : 'Login'}
           </button>
         </form>

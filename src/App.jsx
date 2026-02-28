@@ -7,6 +7,7 @@ import AddEvent from './pages/AddEvent';
 import EditEvent from './pages/EditEvent';
 import Calendar from './pages/Calendar';
 import ProtectedRoute from './components/ProtectedRoute';
+import Profile from './pages/Profile';
 
 const App = () => {
   return (
@@ -41,6 +42,8 @@ const App = () => {
           <Layout><Calendar /></Layout>
         </ProtectedRoute>
       } />
+      <Route path="/profile" element={<Profile />} />
+
     </Routes>
   );
 };
