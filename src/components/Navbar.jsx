@@ -8,7 +8,7 @@ const Navbar = () => {
   const user = auth.currentUser;
 
   const handleLogout = (e) => {
-    e.stopPropagation(); // Profile click trigger na ho
+    e.stopPropagation(); // Profile click 
     signOut(auth);
     navigate('/');
   };

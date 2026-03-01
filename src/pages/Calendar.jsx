@@ -10,10 +10,10 @@ const CalendarView = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Phase 3: Category Colors
+  //  Category Colors
   const categoryColors = {
     Exam: 'bg-red-500',
-    Sports: 'bg-green-500', // Rahul, aapke cricket matches ke liye
+    Sports: 'bg-green-500', 
     Birthday: 'bg-yellow-500',
     Travel: 'bg-blue-500',
     Marriage: 'bg-purple-500'
@@ -71,15 +71,15 @@ const CalendarView = () => {
       {/* Visibility Fix CSS */}
      <style>
   {`
-    /* Poore calendar ka background white karne ke liye */
+    /*  background of calender */
     .react-calendar {
       width: 100% !important;
       border: none !important;
-      background-color: white !important; /* Grey background hta diya */
+      background-color: white !important; 
       font-family: 'Inter', sans-serif !important;
     }
 
-    /* Tiles (dates) ka background aur border hatane ke liye */
+    /* background of title and border */
     .react-calendar__tile {
       background: white !important;
       border: none !important;
@@ -87,19 +87,19 @@ const CalendarView = () => {
       transition: all 0.2s ease;
     }
 
-    /* Dates ka text color ekdum saaf dikhane ke liye */
+    /* text of days */
     .react-calendar__month-view__days__day {
-      color: #374151 !important; /* Dark text */
+      color: #374151 !important; 
       font-weight: 500 !important;
     }
 
-    /* Hover karne par halka sa change */
+    /* Hover */
     .react-calendar__tile:hover {
       background-color: #f3f4f6 !important;
       border-radius: 8px !important;
     }
 
-    /* Aaj ki date (Today) ka highlight style */
+  
     .react-calendar__tile--now {
       background: #eff6ff !important;
       color: #2563eb !important;
@@ -107,14 +107,14 @@ const CalendarView = () => {
       font-weight: bold !important;
     }
 
-    /* Selected date ka blue background */
+    /* background Selected date */
     .react-calendar__tile--active {
       background: #2563eb !important;
       color: white !important;
       border-radius: 8px !important;
     }
 
-    /* Navigation buttons (Prev/Next) ka background fix */
+    /* background of Navigation buttons */
     .react-calendar__navigation button {
       background: white !important;
       color: #374151 !important;
@@ -126,7 +126,7 @@ const CalendarView = () => {
       background-color: #f9fafb !important;
     }
 
-    /* Weekdays (Su, Mo, Tu...) ka color */
+    /* Weekdays /
     .react-calendar__month-view__weekdays__weekday abbr {
       text-decoration: none !important;
       color: #9ca3af !important;

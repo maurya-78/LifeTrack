@@ -12,36 +12,22 @@ import Profile from './pages/Profile';
 const App = () => {
   return (
     <Routes>
-      {/* 1. Login page: No Protection, No Layout */}
+      {/*  Login page: */}
       <Route path="/" element={<Login />} />
 
-      {/* 2. Dashboard: Protected & with Layout */}
-      <Route path="/dashboard" element={
-        <ProtectedRoute>
-          <Layout><Dashboard /></Layout>
-        </ProtectedRoute>
-      } />
+      {/*  Dashboard: */}
+      <Route path="/dashboard" element={ <ProtectedRoute> <Layout><Dashboard /></Layout> </ProtectedRoute>} />
 
-      {/* 3. Add Event: Protected & with Layout */}
-      <Route path="/add-event" element={
-        <ProtectedRoute>
-          <Layout><AddEvent /></Layout>
-        </ProtectedRoute>
-      } />
+      {/*  Add Event: */}
+      <Route path="/add-event" element={<ProtectedRoute><Layout><AddEvent /></Layout></ProtectedRoute>} />
 
-      {/* 4. Edit Event: Protected & with Layout */}
-      <Route path="/edit-event/:id" element={
-        <ProtectedRoute>
-          <Layout><EditEvent /></Layout>
-        </ProtectedRoute>
-      } />
+      {/*  Edit Event: */}
+      <Route path="/edit-event/:id" element={<ProtectedRoute><Layout><EditEvent /></Layout></ProtectedRoute>} />
 
-      {/* 5. Calendar: Protected & with Layout */}
-      <Route path="/calendar" element={
-        <ProtectedRoute>
-          <Layout><Calendar /></Layout>
-        </ProtectedRoute>
-      } />
+      {/*  Calendar:  */}
+      <Route path="/calendar" element={<ProtectedRoute><Layout><Calendar /></Layout></ProtectedRoute>} />
+
+      {/*  profile:  */}
       <Route path="/profile" element={<Profile />} />
 
     </Routes>

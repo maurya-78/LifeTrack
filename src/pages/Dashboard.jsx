@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Phase 3: Category Styling
+  //  Category Styling
   const categoryStyles = {
     Exam: 'border-red-500 bg-red-50 dark:bg-red-900/10 text-red-700',
     Sports: 'border-green-500 bg-green-50 dark:bg-green-900/10 text-green-700', // For RCB fans!

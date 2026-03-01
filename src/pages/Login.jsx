@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       if (isRegistering) {
-        // 1. Sign Up Logic
+        //  Sign Up Logic
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         
         // 2. Add Name to Firebase Profile
@@ -51,7 +51,7 @@ const Login = () => {
         <form onSubmit={handleAuth} className="space-y-6">
           {error && <div className="bg-red-100 text-red-700 p-3 rounded-lg text-sm border border-red-200">{error}</div>}
 
-          {/* Sirf Signup ke waqt Name field dikhayein */}
+          {/* Name field during signup */}
           {isRegistering && (
             <input
               type="text"

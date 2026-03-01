@@ -14,7 +14,7 @@ const EditEvent = () => {
     description: ''
   });
 
-  // 1. Fetch the existing event data from Firestore
+  //  Fetch the existing event data from Firestore
   useEffect(() => {
     const fetchEvent = async () => {
       try {
@@ -46,7 +46,7 @@ const EditEvent = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 2. Update the document in Firestore
+  //  Update the document in Firestore
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {

@@ -4,10 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
 
-/**
- * Entry point for the React application.
- * Utilizes Concurrent Mode via createRoot for optimized rendering.
- */
+
 const rootElement = document.getElementById('root');
 
 if (!rootElement) {
