@@ -74,7 +74,7 @@ const Profile = () => {
               <input type="file" className="hidden" onChange={handleImageChange} accept="image/*" />
             </label>
           </div>
-          <h2 className="text-3xl font-black text-slate-800 tracking-tight">Profile Settings</h2>
+          <h2 className="text-3xl font-black text-slate-800 tracking-tight"></h2>
           <p className="text-slate-500 font-medium">Update your photo and name</p>
         </header>
 

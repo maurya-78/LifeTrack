@@ -113,6 +113,7 @@ const EditEvent = () => {
               <option value="Sports">Sports</option>
               <option value="Education">Education</option>
               <option value="Personal">Personal</option>
+              <option value="Personal">Travel</option>
             </select>
           </div>
 
