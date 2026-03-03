@@ -10,7 +10,7 @@ const AddEvent = () => {
     title: '',
     description: '',
     date: '',
-    category: 'Exam' // Default category
+    category: 'Exam' 
   });
 
   const [loading, setLoading] = useState(false); 
@@ -38,7 +38,7 @@ const AddEvent = () => {
     try {
       const userEventsRef = collection(db, "users", user.uid, "events");
 
-      // Firestore mein data add karna
+      // Add data in the firebase
       await addDoc(userEventsRef, {
         title: formData.title,
         description: formData.description,
@@ -58,13 +58,13 @@ const AddEvent = () => {
   };
 
   return (
-    // Clean White Theme 
+    // Theme 
     <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center p-6">
       <div className="max-w-xl w-full bg-white rounded-[40px] shadow-sm border border-slate-100 overflow-hidden">
         
         <div className="px-10 pt-10 pb-8">
           <h2 className="text-3xl font-black text-slate-800 tracking-tight italic">Create Event</h2>
-          <p className="text-slate-500 font-bold mt-1">Set a new smart reminder, Vishal!</p>
+          <p className="text-slate-500 font-bold mt-1">Set a new smart reminder, {auth.currentUser?.displayName?.split(' ')[0] || "User"}!</p>
         </div>
 
         <form onSubmit={handleSubmit} className="px-10 pb-10 space-y-6">
@@ -77,7 +77,7 @@ const AddEvent = () => {
               value={formData.title}
               onChange={handleChange}
               required
-              placeholder="e.g., Cricket Match at PSIT"
+              placeholder="Event Title "
               className="w-full px-5 py-4 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-500 outline-none font-bold text-slate-700 transition-all"
             />
           </div>
@@ -109,7 +109,7 @@ const AddEvent = () => {
               />
             </div>
 
-            {/* Category Dropdown */}
+            {/* Category  */}
             <div>
               <label className="block text-sm font-black text-slate-700 mb-2 ml-1">Category</label>
              <select

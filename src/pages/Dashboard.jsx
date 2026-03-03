@@ -184,7 +184,7 @@ const Dashboard = () => {
                       <span className="text-slate-400 text-[10px] font-black">{new Date(event.date).toDateString()}</span>
                       {/* Past Date Message */}
                       {isPast && (
-                        <span className="text-[9px] font-black text-blue-400 uppercase tracking-tighter mt-1">● Memory Captured</span>
+                        <span className="text-[9px] font-black text-blue-400 uppercase tracking-tighter mt-1">● Previous Event</span>
                       )}
                     </div>
                     <div className="flex gap-4">

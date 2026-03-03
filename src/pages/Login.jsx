@@ -20,7 +20,7 @@ const Login = () => {
         //  Sign Up Logic
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         
-        // 2. Add Name to Firebase Profile
+        // Add Name to Firebase Profile
         await updateProfile(userCredential.user, {
           displayName: name
         });

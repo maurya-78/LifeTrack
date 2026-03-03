@@ -8,7 +8,7 @@ const Navbar = () => {
   const user = auth.currentUser;
 
   const handleLogout = (e) => {
-    e.stopPropagation(); // Profile click 
+    e.stopPropagation(); // Profile
     signOut(auth);
     navigate('/');
   };
@@ -29,7 +29,7 @@ const Navbar = () => {
           Calendar
         </Link>
         
-        {/* Clickable User Profile Section */}
+        {/* Editing User Profile Section */}
         <div 
           onClick={() => navigate('/profile')}
           className="flex items-center gap-3 pl-4 md:pl-8 border-l border-slate-100 cursor-pointer group transition-all"
