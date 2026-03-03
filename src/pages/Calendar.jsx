@@ -10,7 +10,6 @@ const CalendarView = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  //  Category Colors
   const categoryColors = {
     Exam: 'bg-red-500',
     Sports: 'bg-green-500', 
@@ -41,9 +40,8 @@ const CalendarView = () => {
   }, []);
 
   const getEventsForDate = (selectedDate) => {
-    const offset = selectedDate.getTimezoneOffset();
-    const adjustedDate = new Date(selectedDate.getTime() - (offset * 60 * 1000));
-    const dateString = adjustedDate.toISOString().split('T')[0];
+    
+    const dateString = selectedDate.toLocaleDateString('en-CA'); 
     return events.filter(event => event.date === dateString);
   };
 
@@ -52,107 +50,83 @@ const CalendarView = () => {
       const dayEvents = getEventsForDate(date);
       return (
         <div className="flex justify-center gap-1 mt-1">
-          {dayEvents.map(event => (
+          {dayEvents.slice(0, 3).map(event => (
             <div 
               key={event.id} 
               className={`h-1.5 w-1.5 rounded-full ${categoryColors[event.category] || 'bg-gray-400'}`}
             ></div>
           ))}
+          {dayEvents.length > 3 && <div className="h-1 w-1 rounded-full bg-gray-300"></div>}
         </div>
       );
     }
     return null;
   };
 
-  if (loading) return <div className="text-center mt-20 dark:text-white">Loading Calendar...</div>;
+  if (loading) return (
+    <div className="flex justify-center items-center min-h-screen bg-[#f8fafc]">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-blue-600"></div>
+    </div>
+  );
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8">
-      {/* Visibility Fix CSS */}
-     <style>
-  {`
-    /*  background of calender */
-    .react-calendar {
-      width: 100% !important;
-      border: none !important;
-      background-color: white !important; 
-      font-family: 'Inter', sans-serif !important;
-    }
+    <div className="min-h-screen bg-[#f8fafc] p-6 md:p-12">
+      {/*  CSS */}
+      <style>
+        {`
+          .react-calendar {
+            width: 100% !important;
+            border: none !important;
+            background: transparent !important;
+            font-family: inherit !important;
+          }
+          .react-calendar__tile {
+            padding: 20px 10px !important;
+            border-radius: 16px !important;
+            font-weight: 600 !important;
+            color: #475569 !important;
+          }
+          .react-calendar__tile--active {
+            background: #2563eb !important;
+            color: white !important;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2) !important;
+          }
+          .react-calendar__tile--now {
+            background: #eff6ff !important;
+            color: #2563eb !important;
+          }
+          .react-calendar__navigation button {
+            font-weight: 900 !important;
+            font-size: 1.2rem !important;
+            color: #1e293b !important;
+          }
+          .react-calendar__month-view__weekdays__weekday abbr {
+            text-decoration: none !important;
+            text-transform: uppercase !important;
+            font-weight: 800 !important;
+            font-size: 0.75rem !important;
+            color: #94a3b8 !important;
+          }
+        `}
+      </style>
 
-    /* background of title and border */
-    .react-calendar__tile {
-      background: white !important;
-      border: none !important;
-      padding: 15px 5px !important;
-      transition: all 0.2s ease;
-    }
-
-    /* text of days */
-    .react-calendar__month-view__days__day {
-      color: #374151 !important; 
-      font-weight: 500 !important;
-    }
-
-    /* Hover */
-    .react-calendar__tile:hover {
-      background-color: #f3f4f6 !important;
-      border-radius: 8px !important;
-    }
-
-  
-    .react-calendar__tile--now {
-      background: #eff6ff !important;
-      color: #2563eb !important;
-      border-radius: 8px !important;
-      font-weight: bold !important;
-    }
-
-    /* background Selected date */
-    .react-calendar__tile--active {
-      background: #2563eb !important;
-      color: white !important;
-      border-radius: 8px !important;
-    }
-
-    /* background of Navigation buttons */
-    .react-calendar__navigation button {
-      background: white !important;
-      color: #374151 !important;
-      font-size: 1.2rem !important;
-      font-weight: bold !important;
-    }
-
-    .react-calendar__navigation button:hover {
-      background-color: #f9fafb !important;
-    }
-
-    /* Weekdays /
-    .react-calendar__month-view__weekdays__weekday abbr {
-      text-decoration: none !important;
-      color: #9ca3af !important;
-      font-weight: 600 !important;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-    }
-  `}
-</style>
-
-      <div className="max-w-5xl mx-auto">
-        <header className="mb-8 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto">
+        <header className="mb-12 flex justify-between items-end">
           <div>
-            <h1 className="text-3xl font-extrabold dark:text-white">Events Calendar</h1>
-            <p className="text-gray-500 dark:text-gray-400">Track your schedule visually.</p>
+            <h1 className="text-4xl font-black text-slate-800 tracking-tight italic">Timeline</h1>
+            <p className="text-slate-500 font-bold mt-1">Manage your schedule visually</p>
           </div>
           <button 
             onClick={() => window.history.back()} 
-            className="text-blue-600 font-bold hover:underline"
+            className="bg-white px-6 py-3 rounded-2xl font-black text-slate-600 shadow-sm border border-slate-100 hover:bg-slate-50 transition-all"
           >
-            Go Back
+            ← Back
           </button>
         </header>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          {/* Main Calendar Card */}
+          <div className="lg:col-span-8 bg-white p-8 rounded-[40px] shadow-sm border border-slate-100">
             <Calendar 
               onChange={setDate} 
               value={date} 
@@ -160,27 +134,32 @@ const CalendarView = () => {
             />
           </div>
 
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700">
-            <h2 className="text-xl font-bold mb-6 pb-2 border-b dark:text-white dark:border-gray-700">
-              {date.toDateString()}
+          {/* Sidebar Events List */}
+          <div className="lg:col-span-4 bg-white p-8 rounded-[40px] shadow-sm border border-slate-100 flex flex-col h-fit sticky top-12">
+            <h2 className="text-2xl font-black text-slate-800 mb-6 flex items-center gap-2">
+              <span className="text-blue-600">●</span> {date.toLocaleDateString('en-US', { day: 'numeric', month: 'short' })}
             </h2>
             
-            <div className="space-y-4 overflow-y-auto max-h-[450px] pr-2">
+            <div className="space-y-4 overflow-y-auto max-h-[500px] pr-2 custom-scrollbar">
               {getEventsForDate(date).length > 0 ? (
                 getEventsForDate(date).map(event => (
                   <div 
                     key={event.id} 
-                    className={`p-4 rounded-2xl border-l-4 shadow-sm ${categoryColors[event.category]?.replace('bg-', 'border-') || 'border-gray-300'} bg-gray-50 dark:bg-gray-700/50`}
+                    className="p-5 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-md transition-all group"
                   >
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{event.category}</span>
-                    <h3 className="font-bold text-gray-800 dark:text-white">{event.title}</h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{event.description}</p>
+                    <div className="flex justify-between items-start mb-2">
+                      <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-1 rounded-md bg-white border border-slate-100 ${categoryColors[event.category]?.replace('bg-', 'text-')}`}>
+                        {event.category}
+                      </span>
+                    </div>
+                    <h3 className="font-bold text-slate-800 text-lg group-hover:text-blue-600 transition-colors">{event.title}</h3>
+                    <p className="text-sm text-slate-500 font-medium mt-1 line-clamp-2">{event.description}</p>
                   </div>
                 ))
               ) : (
-                <div className="text-center py-10">
-                  <p className="text-4xl mb-3">🌟</p>
-                  <p className="text-gray-400 font-medium">No plans for today, Rahul!</p>
+                <div className="text-center py-16">
+                  <div className="text-5xl mb-4 opacity-20">📅</div>
+                  <p className="text-slate-400 font-bold italic text-sm">Free day, {auth.currentUser?.displayName?.split(' ')[0] || "User"}! Enjoy. 🌴</p>
                 </div>
               )}
             </div>
