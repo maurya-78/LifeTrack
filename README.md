@@ -109,9 +109,9 @@ Deployed using Vercel
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Made By
 
-Rahul Kumar
+Rahul Kumar Maurya
 
 ---
 
