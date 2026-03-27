@@ -54,20 +54,23 @@ src/
 
 ### 🔐 Login Page
 
-![Login](./screenshots/login.png)
+<img width="1913" height="909" alt="Login SignIn" src="https://github.com/user-attachments/assets/b93d5496-03e2-4a65-89b5-d9634a955deb" />
+
 
 ### 📊 Dashboard
 
-![Dashboard](./screenshots/dashboard.png)
+<img width="1899" height="903" alt="Dashboard" src="https://github.com/user-attachments/assets/74a98c76-ab23-4722-a149-87c39fad150b" />
+
 
 ### ➕ Add Event
 
-![Add Event](./screenshots/add-event.png)
+<img width="1897" height="907" alt="Add" src="https://github.com/user-attachments/assets/466f1d27-d9aa-4c5d-94f6-77ec1e628fa8" />
+
 
 ### 📅 Calendar View
 
-![Calendar](./screenshots/calendar.png)
-<img width="1899" height="903" alt="Dashboard" src="https://github.com/user-attachments/assets/6578ca14-b1dd-42a4-9039-a2f9c1767523" />
+<img width="1897" height="911" alt="Calender" src="https://github.com/user-attachments/assets/15791bc0-a3dd-4cd6-8639-8f15b6a5b3f5" />
+
 
 ---
 
