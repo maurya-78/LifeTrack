@@ -67,6 +67,7 @@ src/
 ### 📅 Calendar View
 
 ![Calendar](./screenshots/calendar.png)
+<img width="1899" height="903" alt="Dashboard" src="https://github.com/user-attachments/assets/6578ca14-b1dd-42a4-9039-a2f9c1767523" />
 
 ---
 
