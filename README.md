@@ -2,7 +2,7 @@
 
 ## 🌐 Live Demo
 
-👉 https://your-vercel-link.vercel.app
+👉 https://life-track-blush.vercel.app/
 
 ---
 
