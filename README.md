@@ -113,9 +113,16 @@ Deployed using Vercel
 
 ---
 
-## 👨‍💻 Made By
+## 👨‍💻 Designed with ❤️ by
 
 Rahul Kumar Maurya
+
+---
+
+📞 Support & Contact
+Email: jimaurya6386@gmail.com
+Website: life-track-blush.vercel.app
+Issues: GitHub Issues
 
 ---
 
