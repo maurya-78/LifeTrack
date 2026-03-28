@@ -56,6 +56,10 @@ src/
 
 <img width="1913" height="909" alt="Login SignIn" src="https://github.com/user-attachments/assets/b93d5496-03e2-4a65-89b5-d9634a955deb" />
 
+### 👤 Profile Page
+
+<img width="1904" height="912" alt="Profiles" src="https://github.com/user-attachments/assets/caa643c1-e9a3-49f6-b016-8d292c14a5ee" />
+
 
 ### 📊 Dashboard
 
