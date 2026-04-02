@@ -112,7 +112,7 @@ Deployed using Vercel
 
 * 🔔 Push Notifications
 * 📧 Email Reminders
-* 🌙 Dark Mode
+* 🌙 Dark Mode*
 * 🤖 AI-based Suggestions
 
 ---
