@@ -127,7 +127,6 @@ Rahul Kumar Maurya
 Email: jimaurya6386@gmail.com
 Website: life-track-blush.vercel.app
 Issues: GitHub Issues
-
 ---
 
 ## ⭐ Support
