@@ -97,8 +97,8 @@ src/
    VITE_MESSAGING_SENDER_ID=your_sender_id
    VITE_APP_ID=your_app_id
 
-5. Run the project:
-   npm run dev
+5. Run the project : 
+     npm run dev
 
 ---
 
