@@ -1,3 +1,5 @@
+                   # LIFETRACK
+
 # 🚀 LifeTrack – Smart Event Reminder App
 
 ## 🌐 Live Demo
@@ -124,6 +126,7 @@ Rahul Kumar Maurya
 ---
 
 📞 Support & Contact
+
 Email: jimaurya6386@gmail.com
 Website: life-track-blush.vercel.app
 Issues: GitHub Issues
@@ -132,3 +135,4 @@ Issues: GitHub Issues
 ## ⭐ Support
 
 If you like this project, give it a ⭐ on GitHub!
+
