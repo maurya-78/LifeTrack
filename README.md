@@ -1,5 +1,3 @@
-                   # LIFETRACK
-
 # 🚀 LifeTrack – Smart Event Reminder App
 
 ## 🌐 Live Demo
